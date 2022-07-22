@@ -8,7 +8,7 @@ from random import randint
 async def mux_test(dut):
     """Test for mux2"""
 
-    INP30 = 1
+    INP30 = randint(0,3)
     SEL = 30
 
     dut.inp30.value = INP30
@@ -38,14 +38,14 @@ async def mux_test2(dut):
 @cocotb.test()   
 async def mux_test3(dut):
         INP = randint(0,3)
-        SEL = 5
+        SEL = 14
 
-        dut.inp5.value = INP
+        dut.inp14.value = INP
         dut.sel.value = SEL
 
         await Timer(1,units='ns')
 
         #dut._log.info(f'INP={IN:05} OUT={OUT:05} model={OUT=IN:05} DUT={int(dut.out.value):05}')
-        assert dut.out.value == dut.inp5.value, "MUX output is incorrect: {OUT} != {IN}".format(
+        assert dut.out.value == dut.inp14.value, "MUX output is incorrect: {OUT} != {IN}".format(
             OUT = int(dut.out.value), IN = int(dut.inp5.value)
         )
