@@ -4502,4 +4502,3 @@ module mkbitmanip(CLK,
     endcase
   end
 endmodule  // mkbitmanip
-

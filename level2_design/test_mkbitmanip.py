@@ -60,3 +60,34 @@ def run_test(dut):
     # comparison
     error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}'
     assert dut_output == expected_mav_putvalue, error_message
+
+@cocotb.test()
+def run_test2(dut):
+    cocotb.fork(clock_gen(dut.CLK))
+
+    dut.RST_N.value <= 0;
+    yield Timer(10)
+    dut.RST_N.value <= 1;
+
+    mav_putvalue_src1 = 0x5
+    mav_putvalue_src2 = 0x1
+    mav_putvalue_src3 = 0x0
+    mav_putvalue_instr = 0x20007033
+
+    expected_mav_putvalue = bitmanip(mav_putvalue_instr,mav_putvalue_src1,mav_putvalue_src2,mav_putvalue_src3)
+
+    dut.mav_putvalue_src1.value = mav_putvalue_src1
+    dut.mav_putvalue_src2.value = mav_putvalue_src2
+    dut.mav_putvalue_src3.value = mav_putvalue_src3
+    dut.EN_mav_putvalue.value = 1
+    dut.mav_putvalue_instr.value = mav_putvalue_instr
+
+    yield Timer(1)
+
+    dut_output = dut.mav_putvalue.value
+
+    cocotb.log.info(f'DUT OUTPUT={hex(dut_output)}')
+    cocotb.log.info(f'EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
+
+    error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}'
+    assert dut_output == expected_mav_putvalue, error_message
