@@ -16,4 +16,20 @@ def clock_gen(signal):
 
 @cocotb.test()
 def run_test(dut):
+    cocotb.fork(clock_gen(dut.clk))
+
+    dut.rstn.value <= 1
+    yield Timer(1)
+    dut.rstn.value <= 0
     
+    dut_in = 0x8
+    dut.push.value = 1
+    dut.din.value = dut_in
+
+    yield RisingEdge(dut.clk)
+    dut.pop.value = 1
+    dut_out = dut.dout.Value
+
+    assert dut_out == dut_in
+
+
