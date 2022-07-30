@@ -1,35 +1,31 @@
 import random
 import sys
 import cocotb
-from cocotb.decorators import coroutine
-from cocotb.triggers import Timer, RisingEdge
-from cocotb.result import TestFailure
+from cocotb.triggers import Timer, RisingEdge, FallingEdge
 from cocotb.clock import Clock
 
-@cocotb.coroutine
-def clock_gen(signal):
-    while(True):
-        signal.value <= 0
-        yield Timer(1)
-        signal.value <= 1 
-        yield Timer(1)
-
 @cocotb.test()
-def run_test(dut):
-    cocotb.fork(clock_gen(dut.clk))
+async def run_test(dut):
+    clock = Clock(dut.clk,10,units="ns")
+    cocotb.start_soon(clock.start())
 
-    dut.rstn.value <= 1
-    yield Timer(1)
-    dut.rstn.value <= 0
-    
-    dut_in = 0x8
+    dut.rstn.value = 0
+    await RisingEdge(dut.clk)
+    dut.rstn.value = 1
+    await RisingEdge(dut.clk)
+
+    DIN = 0x1
+    dut.din.value = DIN
+    await RisingEdge(dut.clk)
     dut.push.value = 1
-    dut.din.value = dut_in
+    await FallingEdge(dut.clk)
 
-    yield RisingEdge(dut.clk)
     dut.pop.value = 1
-    dut_out = dut.dout.Value
+    await RisingEdge(dut.clk)
+    DOUT = dut.dout.value
+    await RisingEdge(dut.clk)
+    
+    assert DOUT == DIN,f"{DOUT} != {DIN}"
 
-    assert dut_out == dut_in
 
 
