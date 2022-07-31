@@ -2,4 +2,4 @@
 
 The verification environment is setup using [Vyoma's Uptick Pro](https://vyomasystems.com) provided for the hackathon.
 
-![](https://photos.app.goo.gl/FgAoF454BdQCqXM87)
+![](https://flic.kr/p/2nBpGsH)
