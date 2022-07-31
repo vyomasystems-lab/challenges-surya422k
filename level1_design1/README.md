@@ -41,3 +41,6 @@ We need to add another case for 31 as
     5'b11110: out = inp30;
 ```
 ## Design Fix
+
+![Screenshot (13)](https://user-images.githubusercontent.com/47589022/182038345-6db9c23c-1c6a-4552-beb2-ab065e75c6d3.png)
+
