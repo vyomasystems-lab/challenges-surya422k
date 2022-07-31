@@ -30,7 +30,7 @@ wire empty, full;
 
 always @ (posedge clk) //Sequential block
 begin
-  if(rstn)
+  if(!rstn)
   begin
     dout  <= 8'd0;
     index <= 1'b0;
@@ -52,9 +52,9 @@ begin
   stack[index] = din;
   next_index   = index+1'b1;
   end
-  else if(pop && !empty)  //read
+  else if(pop && empty)  //read
   begin
-  next_dout  = stack[index-1'b1];
+  next_dout  = stack[index-1'b1]; //stack[index-1'b1]
   next_index = index-1'b1;
   end
   else
