@@ -40,7 +40,26 @@ We need to add another case for 31 as
 ```
     5'b11110: out = inp30;
 ```
-## Design Fix
+## Design Fix 1
+
+Updating design and rerunning makes the test pass. The bug is resolves in mux_fix.v
 
 ![Screenshot (13)](https://user-images.githubusercontent.com/47589022/182038345-6db9c23c-1c6a-4552-beb2-ab065e75c6d3.png)
+
+## Test scenario 2
+- Test inputs: inp12 = 16, sel = 12
+- Expected Output: out = 12
+- Observed output at DUT: out = 0
+
+## Design bug 2
+
+Inside the switch-case statement for sel input, inp12 is assigned for sel value 13, so the result becomes 0
+
+```
+    5'b01101: out = inp12;
+    5'b01101: out = inp13;
+```
+We need to change the address value in inp12 to 5'b01100
+
+## Design Fix
 

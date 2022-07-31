@@ -19,3 +19,12 @@ async def mux_test(dut):
     assert dut.out.value == dut.inp30.value, "MUX output is incorrect: {OUT} != {IN}".format(
         OUT = int(dut.out.value), IN = int(dut.inp30.value)
     )
+
+@cocotb.test()
+async def mux_test12(dut):
+    inp = randint(0,3)
+    SEL = 12
+    dut.inp12.value = inp
+    dut.sel.value = SEL
+    await Timer(1,units="us")
+    assert dut.out.value == dut.inp12.value, "MUX output is incorrect"
