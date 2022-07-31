@@ -30,7 +30,7 @@ wire empty, full;
 
 always @ (posedge clk) //Sequential block
 begin
-  if(!rstn)
+  if(rstn)
   begin
     dout  <= 8'd0;
     index <= 1'b0;

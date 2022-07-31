@@ -10,22 +10,27 @@ async def run_test(dut):
     cocotb.start_soon(clock.start())
 
     dut.rstn.value = 0
-    await RisingEdge(dut.clk)
+    await FallingEdge(dut.clk)
     dut.rstn.value = 1
-    await RisingEdge(dut.clk)
-
-    DIN = 0x1
-    dut.din.value = DIN
-    await RisingEdge(dut.clk)
-    dut.push.value = 1
     await FallingEdge(dut.clk)
 
+    DIN = 0x8
+    dut.din.value = DIN
+    dut.push.value = 1
+    await FallingEdge(dut.clk)
+    dut.push.value = 0
+    await FallingEdge(dut.clk)
+    DIN2 = 0x10
+    dut.din.value = DIN2
+    dut.push.value = 1
+    await FallingEdge(dut.clk)
+    dut.push.value = 0
     dut.pop.value = 1
-    await RisingEdge(dut.clk)
+    await FallingEdge(dut.clk)
     DOUT = dut.dout.value
-    await RisingEdge(dut.clk)
+    dut.pop.value = 0
     
-    assert DOUT == DIN,f"{DOUT} != {DIN}"
+    assert DOUT == DIN2,f"{DOUT} != {DIN2}"
 
 
 
