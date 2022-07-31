@@ -63,3 +63,7 @@ We need to change the address value in inp12 to 5'b01100
 
 ## Design Fix
 
+Updating the design and rerunning makes tests passed.
+
+![Screenshot (14)](https://user-images.githubusercontent.com/47589022/182039313-4d51023b-feb6-4afb-aec2-96ae5b65532a.png)
+
