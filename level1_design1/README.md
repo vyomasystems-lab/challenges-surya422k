@@ -9,3 +9,14 @@ The verification environment is setup using [Vyoma's Uptick Pro](https://vyomasy
 
 >>>>>>> c5cddb1303b83ca70002822a273a579bf710b01e
 
+##Verification Environment
+
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives input into 31-to-1 MUX (Design Under Test) and verifies the correctiveness of the output.
+
+The values are assigned into input ports using 
+```
+For port 30 of MUX
+inp = randint(0,3)
+dut.inp30.value = inp
+dut.sel.value = 30
+```
