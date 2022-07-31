@@ -67,3 +67,9 @@ Updating the design and rerunning makes tests passed.
 
 ![Screenshot (14)](https://user-images.githubusercontent.com/47589022/182039313-4d51023b-feb6-4afb-aec2-96ae5b65532a.png)
 
+## Verification Strategy
+
+The verification is done for this DUT (31-to-1 MUX) by feeding random values to each select line command separately. 
+
+
+
