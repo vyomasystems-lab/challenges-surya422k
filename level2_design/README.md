@@ -6,7 +6,7 @@ The verification environment is setup using [Vyoma's Uptick Pro](https://vyomasy
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives input into 31-to-1 MUX (Design Under Test) and verifies the correctiveness of the output.
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives the source values and instruction to the coprocessor to verify its functionality.
 
 The values are assigned to the input ports using 
 ```
