@@ -25,3 +25,30 @@ Assertion is used to check whether correct output is obtained at correct clock c
 ```
 assert out==in, f"Output Mismatch {out} != {in}"
 ```
+
+## Test Scenario 1
+- Test inputs: in = value between 0 and 255, push = 1, after falling edge, pop = 1
+- Expected output: out = value between 0 and 255
+- Output observed in DUT: out = 0
+
+Mismatched output indicates a bug in design.
+
+## Design Bug 1
+On observing DUT, we can identify that the if statement for the POP operation in LIFO is incorrect
+```
+else if(pop && empty)
+begin
+..
+end
+```
+Changing the condition inside if statement as
+```
+else if(pop && !empty)
+```
+fixes the bug in the design
+
+## Design Fix 1
+
+Updating design and rerunning makes the test pass. The bug is resolved in lifo_fix.v
+
+
