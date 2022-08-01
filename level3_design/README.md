@@ -52,3 +52,27 @@ fixes the bug in the design
 Updating design and rerunning makes the test pass. The bug is resolved in lifo_fix.v
 
 ![Screenshot (17)](https://user-images.githubusercontent.com/47589022/182159093-2f9af5af-aa20-463f-87bd-10414b0a98f4.png)
+
+## Test scenario 2
+- Test inputs: in = random value between 1 and 255, push = 1, wait for falling edge, pop = 1
+- Expected output: out = random value between 1 and 255
+- Output observed at DUT: out = 0
+
+## Design bug 2
+
+The circuit operates for negative edge of clock and ignores operations hapenning at positive edge of clock.
+
+```
+always @ (negedge clk)
+```
+
+Changing negedge to posedge fixes the DUT.
+
+```
+always @ (posedge clk)
+```
+
+## Design Fix 2
+
+Updating the design and rerunning makes tests passed.
+
