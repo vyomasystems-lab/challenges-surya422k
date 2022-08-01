@@ -470,9 +470,9 @@ def run_test15(dut):
      dut.RST_N.value <= 0
      yield Timer(10)
      dut.RST_N.value <= 1
-     mav_putvalue_src1 = 0xA
-     mav_putvalue_src2 = 0xA
-     mav_putvalue_src3 = 0x1
+     mav_putvalue_src1 = 0x0
+     mav_putvalue_src2 = 0x0
+     mav_putvalue_src3 = 0x0
      mav_putvalue_instr = 0x28005033
      expected_mav_putvalue = bitmanip(mav_putvalue_instr,mav_putvalue_src1,mav_putvalue_src2,mav_putvalue_src3)
      dut.mav_putvalue_src1.value = mav_putvalue_src1
@@ -493,9 +493,9 @@ def run_test16(dut):
      dut.RST_N.value <= 0
      yield Timer(10)
      dut.RST_N.value <= 1
-     mav_putvalue_src1 = 0xB
+     mav_putvalue_src1 = 0xA
      mav_putvalue_src2 = 0xB
-     mav_putvalue_src3 = 0x0
+     mav_putvalue_src3 = 0xC
      mav_putvalue_instr = 0x68005033
      expected_mav_putvalue = bitmanip(mav_putvalue_instr,mav_putvalue_src1,mav_putvalue_src2,mav_putvalue_src3)
      dut.mav_putvalue_src1.value = mav_putvalue_src1

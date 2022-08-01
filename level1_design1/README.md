@@ -10,7 +10,7 @@ The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explaine
 
 The values are assigned into input ports using 
 ```
-For port 30 of MUX
+//For port 30 of MUX
 inp = randint(0,3)
 dut.inp30.value = inp
 dut.sel.value = 30
@@ -69,7 +69,4 @@ Updating the design and rerunning makes tests passed.
 
 ## Verification Strategy
 
-The verification is done for this DUT (31-to-1 MUX) by feeding random values to each select line command separately. 
-
-
-
+The verification is done for this DUT (31-to-1 MUX) by feeding random values to each select line command separately. Some of the bugs can be identified by obserivng the DUT.
