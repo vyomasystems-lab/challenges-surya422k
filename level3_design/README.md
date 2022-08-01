@@ -51,5 +51,4 @@ fixes the bug in the design
 
 Updating design and rerunning makes the test pass. The bug is resolved in lifo_fix.v
 
-
-
+![Screenshot (17)](https://user-images.githubusercontent.com/47589022/182159093-2f9af5af-aa20-463f-87bd-10414b0a98f4.png)
