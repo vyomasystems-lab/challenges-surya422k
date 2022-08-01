@@ -33,6 +33,8 @@ async def run_test(dut):
     DOUT = dut.dout.value
     await FallingEdge(dut.clk)
     dut.pop.value = 0
+    print(f"IN = {DIN2}")
+    print(f"OUT = {int(DOUT)}")
     assert DOUT == DIN2,f"{DOUT} != {DIN2}"
 
 
